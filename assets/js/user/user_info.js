@@ -16,16 +16,17 @@ $(function () {
         initUserInfo();
     });
     //提交修改信息
-    $("#layui-form").on("submit", function (e) {
+    $(".layui-form").on("submit", function (e) {
+        alert(11)
         // 阻止表单的默认重置行为
         e.preventDefault();
         //发起Ajax请求
         $.ajax({
-            method: "POST",
+            method: "PUT",
             url: "/my/userinfo",
             data: $(this).serialize(),
             suceess: function (res) {
-                if (res.status !== 0) { 
+                if (res.code !== 0) { 
                     return layer.msg('更新用户信息失败！');
                 } 
                 layer.msg('更新用户信息成功！');
