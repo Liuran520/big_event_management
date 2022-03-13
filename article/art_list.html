@@ -58,7 +58,9 @@
     <script type="text/html" id="tpl-table">
         {{each data}}
             <tr>
-                <td>{{$value.title}}</td>
+                <td>
+                    <a href="javascript:;"class="link-detail" data-id="{{$value.id}}">{{$value.title}}</a>
+                </td>
                 <td>{{$value.cate_name}}</td>
                 <td>{{$value.pub_date|dataFormat}}</td>
                 <td>{{$value.state}}</td>
@@ -67,6 +69,25 @@
                 </td>
             </tr>
         {{/each}}
+    </script>
+    <!-- 查看详细信息的弹出层 -->
+    <script type="text/html" id="detail-list">
+        <div class="layui-layer-content">
+             <div class="artinfo-box">
+                 <h1 class="artinfo-title">{{data.title}}</h1>
+                 <div class="artinfo-bar">
+                     <span>作者：{{data.nickname}}</span>
+                     <span>发布时间：{{data.pub_date|dataFormat}}</span>
+                     <span>所属分类：{{data.cate_name}}</span>
+                     <span>状态：{{data.state}}</span> 
+                 </div>
+                 <hr>
+                 <img src="http://www.liulongbin.top:3008"+{{data.cover_img}} alt="" class="artinfo-cover">
+                 <div>
+                     <p>{{data.title}}</p>
+                 </div>
+             </div>
+        </div>
     </script>
     <!-- 分类可选项的模板结构 -->
     <script type="text/html" id="tpl-cate">

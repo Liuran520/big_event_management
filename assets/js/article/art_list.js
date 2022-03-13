@@ -90,7 +90,7 @@ $(function () {
                 // 如果 first 的值为 true，证明是方式2触发的
                 // 否则就是方式1触发的
                 // console.log(first)
-                console.log(obj.curr)
+                // console.log(obj.curr)
                 // 把最新的页码值，赋值到 q 这个查询参数对象中
                 q.pagenum = obj.curr
                 // 把最新的条目数，赋值到 q 这个查询参数对象的 pagesize 属性中
@@ -128,5 +128,31 @@ $(function () {
                 initTable();
             }
         })
+    });
+    //为a链接注册点击事件
+    var seeindex=null;
+    $('tbody').on("click",'.link-detail',function(){
+        var id=$(this).attr("data-id");
+        //发起ajax请求
+        $.ajax({
+            method:"GET",
+            url:"/my/article/info?id="+id,
+            success:function(res){
+                if(res.code!==0){
+                    return layer.msg('获取信息失败！')
+                }
+                //调用template模板
+                var htmlStr = template("detail-list", res);
+                $('.artinfo-box').html(htmlStr);
+
+            }
+        })
+        seeindex=layer.open(
+            { type: 1, 
+              area: ['900px', '450px'], 
+              title: '预览文章', 
+              content: $('#detail-list').html()
+            }
+        )
     })
 })
