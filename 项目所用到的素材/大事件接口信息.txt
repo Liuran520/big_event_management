@@ -1,0 +1,33 @@
+大事件官网机器：http://www.escook.cn:8086/
+刷新DNS缓存
+打开cmd窗口，执行ipconfig /flushdns命令
+大事件的注册接口：（post)
+http://www.liulongbin.top:3008/api/reg?username=wj1010wj&password=12345678&repassword=12345678
+传入参数：username=wj1010wj&password=12345678&repassword=12345678
+http://www.liulongbin.top:3008/api/login(post方法）
+传入参数：{
+    "username": "lr1010lr",
+    "password": "12345678"
+}
+获取用户信息
+参数：需要在header中添加Authorization字段，Authorization对应的值是登陆是返回的token值
+http://www.liulongbin.top:3008/my/userinfo
+更新用户信息
+http://www.liulongbin.top:3008/my/userinfo（put）
+重置密码信息
+传入参数分别问id，新密码，旧密码
+接口：http://www.liulongbin.top:3008/my/updatepwd（PATCH）
+上传头像接口：
+传入参数：avatar：图片的url地址
+接口：http://www.liulongbin.top:3008/my/update/avatar（PATCH）
+
+http://www.liulongbin.top:3008/my/cate/list
+http://www.liulongbin.top:3008/my/article/cates
+
+发表文章：post
+title: 林一男神
+cate_id: 20374
+content: <p>之我峨嵋我峨嵋你</p>
+cover_img: (binary)
+state: 已发布
+http://www.liulongbin.top:3008/my/article/add
