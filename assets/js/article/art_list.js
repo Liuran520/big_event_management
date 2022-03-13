@@ -142,6 +142,7 @@ $(function () {
                     return layer.msg('获取信息失败！')
                 }
                 //调用template模板
+                res.data["cover_img"]="http://www.liulongbin.top:3008"+res.data["cover_img"]
                 var htmlStr = template("detail-list", res);
                 $('.artinfo-box').html(htmlStr);
 
